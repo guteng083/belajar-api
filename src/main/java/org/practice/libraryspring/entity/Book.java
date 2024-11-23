@@ -25,11 +25,13 @@ public class Book {
 
     private String publisher;
 
+    @Column(name = "published_date")
     private LocalDate publishedDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "total_copies")
     private int totalCopies;
 
+    @Column(name = "available_copies")
     private int availableCopies;
 
     @PrePersist
