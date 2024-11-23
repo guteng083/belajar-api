@@ -26,4 +26,14 @@ public class Book {
     private String publisher;
 
     private LocalDate publishedDate;
+
+    @Column(nullable = false)
+    private int totalCopies;
+
+    private int availableCopies;
+
+    @PrePersist
+    protected void onCreate() {
+        availableCopies = this.totalCopies;
+    }
 }
