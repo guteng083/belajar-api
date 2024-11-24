@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AuthorService {
     AuthorResponse createAuthor(AuthorRequest authorRequest);
-    AuthorResponse updateAuthor(AuthorRequest authorRequest);
+    AuthorResponse updateAuthor(String id, AuthorRequest authorRequest);
     Author getAuthorById(String id);
     List<AuthorResponse> getAllAuthors();
     void deleteAuthor(String id);
