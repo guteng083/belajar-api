@@ -48,7 +48,7 @@ public class BorrowTransactionServiceImpl implements BorrowTransactionService {
     }
 
     @Override
-    public BorrowTransaction getBorrowTransactionById(String id) {
+    public BorrowTransaction getBorrowTransactionById(Long id) {
         Optional<BorrowTransaction> borrowTransaction = borrowTransactionRepository.findById(id);
         if(borrowTransaction.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No transaction found with id " + id);

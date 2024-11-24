@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class ReturnResponse {
-    private String id;
+    private Long id;
     private Book book;
     private Member member;
     private LocalDate borrowDate;

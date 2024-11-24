@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class BookRequest {
     private String title;
-    private String authorId;
+    private Long authorId;
     private String publisher;
     private LocalDate publishedDate;
     private int totalCopies;

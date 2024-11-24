@@ -8,6 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class BorrowRequest {
-    private String bookId;
-    private String userId;
+    private Long bookId;
+    private Long userId;
 }

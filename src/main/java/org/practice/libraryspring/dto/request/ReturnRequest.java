@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class ReturnRequest {
-    private String id;
+    private Long id;
 }

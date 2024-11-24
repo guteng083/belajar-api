@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member getMemberById(String id) {
+    public Member getMemberById(Long id) {
         Optional<Member> member = memberRepository.findById(id);
         if(member.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found");
@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberResponse updateMember(String id, MemberRequest memberRequest) {
+    public MemberResponse updateMember(Long id, MemberRequest memberRequest) {
         Member member = getMemberById(id);
         member.setName(memberRequest.getName());
         member.setEmail(memberRequest.getEmail());
@@ -63,7 +63,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void deleteMember(String id) {
+    public void deleteMember(Long id) {
         Member member = getMemberById(id);
         memberRepository.delete(member);
     }

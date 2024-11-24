@@ -11,10 +11,11 @@ import java.time.LocalDate;
 @Builder
 @Setter
 @Getter
+@Table(name = "borrow_transaction")
 public class BorrowTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)

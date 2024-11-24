@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface AuthorService {
     AuthorResponse createAuthor(AuthorRequest authorRequest);
-    AuthorResponse updateAuthor(String id, AuthorRequest authorRequest);
-    Author getAuthorById(String id);
+    AuthorResponse updateAuthor(Long id, AuthorRequest authorRequest);
+    Author getAuthorById(Long id);
     List<AuthorResponse> getAllAuthors();
-    void deleteAuthor(String id);
+    void deleteAuthor(Long id);
 }

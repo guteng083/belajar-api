@@ -9,7 +9,7 @@ import org.practice.libraryspring.entity.Author;
 @AllArgsConstructor
 @Builder
 public class AuthorResponse {
-    private String id;
+    private Long id;
     private String name;
 
     public static AuthorResponse AuthorToAuthorResponse(Author author) {

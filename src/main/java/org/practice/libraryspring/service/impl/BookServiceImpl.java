@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookResponse updateBook(String id,BookRequest bookRequest) {
+    public BookResponse updateBook(Long id,BookRequest bookRequest) {
         Book book = getBookById(id);
         book.setTitle(bookRequest.getTitle());
         book.setAuthor(authorService.getAuthorById(bookRequest.getAuthorId()));
@@ -51,7 +51,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(String id) {
+    public Book getBookById(Long id) {
         Optional<Book> book = bookRepository.findById(id);
         if(book.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Book with id %s not found", id));
@@ -68,7 +68,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookResponse> getAllBooksByAuthorId(String authorId) {
+    public List<BookResponse> getAllBooksByAuthorId(Long authorId) {
         Author author = authorService.getAuthorById(authorId);
         List<Book> books = author.getBooks();
         List<BookResponse> bookResponses = new ArrayList<>();
@@ -77,7 +77,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBookById(String id) {
+    public void deleteBookById(Long id) {
         Book book = getBookById(id);
         bookRepository.delete(book);
     }

@@ -9,7 +9,7 @@ import org.practice.libraryspring.entity.Member;
 @AllArgsConstructor
 @Builder
 public class MemberResponse {
-    private String id;
+    private Long id;
     private String name;
     private String email;
     private String phoneNumber;

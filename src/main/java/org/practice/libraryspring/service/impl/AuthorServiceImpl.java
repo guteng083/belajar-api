@@ -34,7 +34,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorResponse updateAuthor(String id, AuthorRequest authorRequest) {
+    public AuthorResponse updateAuthor(Long id, AuthorRequest authorRequest) {
         Author author = getAuthorById(id);
         author.setFirstName(authorRequest.getFirstName());
         author.setLastName(authorRequest.getLastName());
@@ -43,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author getAuthorById(String id) {
+    public Author getAuthorById(Long id) {
         Optional<Author> author = authorRepository.findById(id);
         if(author.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Author not found");
