@@ -2,7 +2,6 @@ package org.practice.libraryspring.service;
 
 import org.practice.libraryspring.dto.request.AuthorRequest;
 import org.practice.libraryspring.dto.response.AuthorResponse;
-import org.practice.libraryspring.dto.response.BookResponse;
 import org.practice.libraryspring.entity.Author;
 
 import java.util.List;

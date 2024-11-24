@@ -7,11 +7,14 @@ import org.practice.libraryspring.dto.response.AuthorResponse;
 import org.practice.libraryspring.entity.Author;
 import org.practice.libraryspring.repository.AuthorRepository;
 import org.practice.libraryspring.service.AuthorService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,6 +27,7 @@ public class AuthorServiceImpl implements AuthorService {
         Author author = Author.builder()
                 .firstName(authorRequest.getFirstName())
                 .lastName(authorRequest.getLastName())
+                .books(null)
                 .build();
         authorRepository.save(author);
         return AuthorResponse.AuthorToAuthorResponse(author);
@@ -40,7 +44,12 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author getAuthorById(String id) {
-        return authorRepository.findById(id).orElse(null);
+        Optional<Author> author = authorRepository.findById(id);
+        if(author.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Author not found");
+        }
+
+        return author.get();
     }
 
     @Override
