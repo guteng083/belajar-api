@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @Builder
 public class ReturnResponse {
     private Long id;
-    private Book book;
-    private Member member;
+    private BookResponse book;
+    private MemberResponse member;
     private LocalDate borrowDate;
     private LocalDate dueDate;
     private LocalDate returnDate;
@@ -24,8 +24,8 @@ public class ReturnResponse {
     public static ReturnResponse returnResponse(BorrowTransaction borrowTransaction) {
         return ReturnResponse.builder()
                 .id(borrowTransaction.getId())
-                .book(borrowTransaction.getBook())
-                .member(borrowTransaction.getMember())
+                .book(BookResponse.BooktoBookResponse(borrowTransaction.getBook()))
+                .member(MemberResponse.memberToMemberResponse(borrowTransaction.getMember()))
                 .borrowDate(borrowTransaction.getBorrowDate())
                 .dueDate(borrowTransaction.getDueDate())
                 .returnDate(borrowTransaction.getReturnDate())
