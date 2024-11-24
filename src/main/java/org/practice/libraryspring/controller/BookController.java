@@ -31,7 +31,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBookById(id));
     }
 
-    @GetMapping("/{authorId}")
+    @GetMapping("author-book/{authorId}")
     public ResponseEntity<?> getBookByAuthorId(@PathVariable Long authorId) {
         List<BookResponse> bookResponses = bookService.getAllBooksByAuthorId(authorId);
         return ResponseEntity.ok(bookResponses);
