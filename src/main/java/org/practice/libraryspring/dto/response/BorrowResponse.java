@@ -14,16 +14,16 @@ import java.time.LocalDate;
 @Builder
 public class BorrowResponse {
     private Long id;
-    private Book book;
-    private Member member;
+    private BookResponse book;
+    private MemberResponse member;
     private LocalDate borrowDate;
     private LocalDate dueDate;
 
     public static BorrowResponse BorrowToBorrowResponse(BorrowTransaction transaction) {
         return BorrowResponse.builder()
                 .id(transaction.getId())
-                .book(transaction.getBook())
-                .member(transaction.getMember())
+                .book(BookResponse.BooktoBookResponse(transaction.getBook()))
+                .member(MemberResponse.memberToMemberResponse(transaction.getMember()))
                 .borrowDate(transaction.getBorrowDate())
                 .dueDate(transaction.getDueDate())
                 .build();
