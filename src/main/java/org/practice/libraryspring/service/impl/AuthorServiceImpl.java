@@ -47,7 +47,7 @@ public class AuthorServiceImpl implements AuthorService {
     public List<AuthorResponse> getAllAuthors() {
         List<Author> authors = authorRepository.findAll();
         List<AuthorResponse> authorResponses = new ArrayList<>();
-        authors.forEach(author -> authorResponses.add(AuthorResponse.AuthorToAuthorResponse(author));
+        authors.forEach(author -> authorResponses.add(AuthorResponse.AuthorToAuthorResponse(author)));
         return authorResponses;
     }
 
