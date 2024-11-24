@@ -18,8 +18,6 @@ public class BorrowResponse {
     private Member member;
     private LocalDate borrowDate;
     private LocalDate dueDate;
-    private LocalDate returnDate;
-    private double fine;
 
     public static BorrowResponse BorrowToBorrowResponse(BorrowTransaction transaction) {
         return BorrowResponse.builder()
@@ -28,8 +26,6 @@ public class BorrowResponse {
                 .member(transaction.getMember())
                 .borrowDate(transaction.getBorrowDate())
                 .dueDate(transaction.getDueDate())
-                .returnDate(transaction.getReturnDate())
-                .fine(transaction.getFine())
                 .build();
 
     }
