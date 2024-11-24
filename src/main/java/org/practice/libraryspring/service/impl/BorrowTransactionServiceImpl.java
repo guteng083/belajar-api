@@ -31,7 +31,7 @@ public class BorrowTransactionServiceImpl implements BorrowTransactionService {
 
     @Override
     public BorrowResponse borrowBook(BorrowRequest borrowRequest) {
-        Book book = bookService.getBookById(borrowRequest.getBookId());
+        Book book = bookService.getOne(borrowRequest.getBookId());
         Member member = memberService.getMemberById(borrowRequest.getUserId());
         if(book.getAvailableCopies() == 0){
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Book not available");

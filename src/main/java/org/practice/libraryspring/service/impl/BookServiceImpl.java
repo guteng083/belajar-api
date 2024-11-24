@@ -6,7 +6,6 @@ import org.practice.libraryspring.dto.request.BookRequest;
 import org.practice.libraryspring.dto.response.BookResponse;
 import org.practice.libraryspring.entity.Author;
 import org.practice.libraryspring.entity.Book;
-import org.practice.libraryspring.repository.AuthorRepository;
 import org.practice.libraryspring.repository.BookRepository;
 import org.practice.libraryspring.service.AuthorService;
 import org.practice.libraryspring.service.BookService;
@@ -40,7 +39,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookResponse updateBook(Long id,BookRequest bookRequest) {
-        Book book = getBookById(id);
+        Book book = getOne(id);
         book.setTitle(bookRequest.getTitle());
         book.setAuthor(authorService.getAuthorById(bookRequest.getAuthorId()));
         book.setPublisher(bookRequest.getPublisher());
@@ -51,12 +50,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(Long id) {
+    public BookResponse getBookById(Long id) {
         Optional<Book> book = bookRepository.findById(id);
         if(book.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Book with id %s not found", id));
         }
-        return book.get();
+        return BookResponse.BooktoBookResponse(book.get());
     }
 
     @Override
@@ -78,7 +77,16 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void deleteBookById(Long id) {
-        Book book = getBookById(id);
+        Book book = getOne(id);
         bookRepository.delete(book);
+    }
+
+    @Override
+    public Book getOne(Long id) {
+        Optional<Book> book = bookRepository.findById(id);
+        if(book.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Book with id %s not found", id));
+        }
+        return book.get();
     }
 }
