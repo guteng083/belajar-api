@@ -23,6 +23,7 @@ public class BookResponse {
         return BookResponse.builder()
                 .id(book.getId())
                 .title(book.getTitle())
+                .author(book.getAuthor().getFirstName() + " " + book.getAuthor().getLastName())
                 .publisher(book.getPublisher())
                 .publishedDate(book.getPublishedDate())
                 .totalCopies(book.getTotalCopies())

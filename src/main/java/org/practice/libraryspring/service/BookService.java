@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookService {
     BookResponse addBook(BookRequest bookRequest);
-    BookResponse updateBook(BookRequest bookRequest);
+    BookResponse updateBook(String id, BookRequest bookRequest);
     Book getBookById(String id);
     List<BookResponse> getAllBooks();
     List<BookResponse> getAllBooksByAuthorId(String authorId);
