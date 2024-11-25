@@ -11,7 +11,7 @@ import java.util.List;
 public interface BorrowTransactionService {
     BorrowResponse borrowBook(BorrowRequest borrowRequest);
     BorrowResponse getBorrowTransactionById(Long id);
-    ReturnResponse returnBook(ReturnRequest returnRequest);
+    ReturnResponse returnBook(Long id, ReturnRequest returnRequest);
     List<BorrowResponse> getBorrowTransactions();
     BorrowTransaction getOne(Long id);
 }
