@@ -10,7 +10,8 @@ import java.util.List;
 
 public interface BorrowTransactionService {
     BorrowResponse borrowBook(BorrowRequest borrowRequest);
-    BorrowTransaction getBorrowTransactionById(Long id);
+    BorrowResponse getBorrowTransactionById(Long id);
     ReturnResponse returnBook(ReturnRequest returnRequest);
     List<BorrowResponse> getBorrowTransactions();
+    BorrowTransaction getOne(Long id);
 }
