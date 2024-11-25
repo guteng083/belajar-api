@@ -48,17 +48,18 @@ public class BorrowTransactionServiceImpl implements BorrowTransactionService {
     }
 
     @Override
-    public BorrowTransaction getBorrowTransactionById(Long id) {
+    public BorrowResponse getBorrowTransactionById(Long id) {
         Optional<BorrowTransaction> borrowTransaction = borrowTransactionRepository.findById(id);
         if(borrowTransaction.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No transaction found with id " + id);
         }
-        return borrowTransaction.get();
+
+        return BorrowResponse.BorrowToBorrowResponse(borrowTransaction.get());
     }
 
     @Override
     public ReturnResponse returnBook(ReturnRequest returnRequest) {
-        BorrowTransaction borrowTransaction = getBorrowTransactionById(returnRequest.getId());
+        BorrowTransaction borrowTransaction = getOne(returnRequest.getId());
         BorrowTransaction returned = new BorrowTransaction();
         returned.setId(borrowTransaction.getId());
         returned.setBook(borrowTransaction.getBook());
@@ -77,5 +78,14 @@ public class BorrowTransactionServiceImpl implements BorrowTransactionService {
             borrowResponses.add(BorrowResponse.BorrowToBorrowResponse(borrowTransaction));
         });
         return borrowResponses;
+    }
+
+    @Override
+    public BorrowTransaction getOne(Long id) {
+        Optional<BorrowTransaction> borrowTransaction = borrowTransactionRepository.findById(id);
+        if(borrowTransaction.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No transaction found with id " + id);
+        }
+        return borrowTransaction.get();
     }
 }
