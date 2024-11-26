@@ -40,6 +40,7 @@ public class BorrowTransaction {
     public void prePersist() {
         borrowDate = LocalDate.now();
         dueDate = LocalDate.now().plusDays(7);
+        fine = 0.0;
     }
 
     @PreUpdate

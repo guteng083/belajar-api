@@ -66,7 +66,12 @@ public class BorrowTransactionServiceImpl implements BorrowTransactionService {
         returned.setMember(borrowTransaction.getMember());
         returned.setBorrowDate(borrowTransaction.getBorrowDate());
         returned.setDueDate(borrowTransaction.getDueDate());
+        returned.setReturnDate(borrowTransaction.getReturnDate());
+        returned.setFine(borrowTransaction.getFine());
         borrowTransactionRepository.save(returned);
+
+        Book book = bookService.getOne(borrowTransaction.getBook().getId());
+        book.setAvailableCopies(book.getAvailableCopies() + 1);
         return ReturnResponse.returnResponse(returned);
     }
 
