@@ -1,9 +1,10 @@
 package org.practice.libraryspring.service;
 
 import org.practice.libraryspring.entity.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JwtService {
     String generateToken(User user);
-    User getUserFromToken(String token);
-    boolean validateToken(String token);
+    String getUsernameFromToken(String token);
+    boolean validateToken(String token, UserDetails userDetails);
 }
