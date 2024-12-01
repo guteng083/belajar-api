@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
         User user = User.builder()
                 .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .role(Role.LIBRARIAN)
+                .role(Role.ROLE_LIBRARIAN)
                 .build();
         userRepository.save(user);
 
@@ -54,7 +54,7 @@ public class AuthServiceImpl implements AuthService {
         User user = User.builder()
                 .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .role(Role.ADMIN)
+                .role(Role.ROLE_ADMIN)
                 .build();
 
         userRepository.save(user);
