@@ -39,9 +39,4 @@ public class BeanConfig {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
-
-    @Bean
-    public JwtFilter jwtFilter() {
-        return new JwtFilter();
-    }
 }
