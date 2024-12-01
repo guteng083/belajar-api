@@ -24,7 +24,7 @@ public class JwtServiceImpl implements JwtService {
     private final String issuer;
     private final Algorithm algorithm;
 
-    public JwtServiceImpl(UserService userService) {
+    public JwtServiceImpl() {
         this.secret = "odaooekmdakmedapok213jeqduhokawmeu3uudnsamdiamvbhefadjmc";
         this.expiration = 1800;
         this.issuer = "libraryspring";
