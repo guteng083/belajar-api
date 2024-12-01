@@ -1,8 +1,8 @@
 package org.practice.libraryspring.constant;
 
 public enum Role {
-    ADMIN("Admin"),
-    LIBRARIAN("Pustakawan");
+    ROLE_ADMIN("Admin"),
+    ROLE_LIBRARIAN("Pustakawan");
 
     private String role;
 
